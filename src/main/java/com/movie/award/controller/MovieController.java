@@ -19,14 +19,14 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/v1/movies")
+@RequestMapping("api/v1/movies")
 public class MovieController {
 
     @Autowired
     private MovieService movieService;
 
     @GetMapping
-    public ResponseEntity<List<Movie>> getMooooviers(){
+    public ResponseEntity<List<Movie>> getAllMovies(){
         List<Movie> movies = this.movieService.getAllMovies();
         return new ResponseEntity<>(movies, HttpStatus.OK);
     }
@@ -37,7 +37,7 @@ public class MovieController {
         return new ResponseEntity<>(newMovie, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     public String deleteMovie(@PathVariable("id") Integer id){
         return movieService.deleteMovie(id);
     }
