@@ -7,6 +7,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.Objects;
 
 
 @Entity
+@Table(name = "movie", uniqueConstraints = @UniqueConstraint(columnNames = "title"))
 public class Movie {
 
     @Id
@@ -23,6 +26,7 @@ public class Movie {
 
     private List<String> producers;
     private List<String> studios;
+
     private String title;
     private boolean winner;
     private int nominatedYear;

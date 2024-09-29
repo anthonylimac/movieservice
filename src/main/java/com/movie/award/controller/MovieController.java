@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @AllArgsConstructor
@@ -28,7 +29,7 @@ public class MovieController {
     private MovieService movieService;
 
     @GetMapping
-    public ResponseEntity<List<Movie>> getAllMovies(){
+    public ResponseEntity<List<Movie>> getAllMovies() throws IOException {
         List<Movie> movies = this.movieService.getAllMovies();
         return new ResponseEntity<>(movies, HttpStatus.OK);
     }
@@ -48,6 +49,5 @@ public class MovieController {
     public ResponseEntity<Movie> editMovie(@RequestBody Movie movie) {
         Movie editedMovie =  movieService.editMovie(movie);
         return new ResponseEntity<>(editedMovie, HttpStatus.OK);
-
     }
 }

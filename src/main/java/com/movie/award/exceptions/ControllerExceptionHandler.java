@@ -19,4 +19,10 @@ public class ControllerExceptionHandler {
         ExceptionDTO exceptionDTO = new ExceptionDTO(exception.getMessage(),"406");
         return ResponseEntity.badRequest().body((exceptionDTO));
     }
+
+    @ExceptionHandler(MovieAlreadyCreatedException.class)
+    public ResponseEntity threatMovieAlreadyCreatedException(MovieAlreadyCreatedException exception){
+        ExceptionDTO exceptionDTO = new ExceptionDTO(exception.getMessage(),"400");
+        return ResponseEntity.badRequest().body((exceptionDTO));
+    }
 }
