@@ -19,7 +19,7 @@ Build the Project:
 
 Running with Docker
     Build the Docker Image: From the root directory of your project, build the Docker image using the following command:
-    docker build -t anthonylimac/movie-award .
+    docker pull anthonylimac/movie-award
     Run the Docker container with the following command: docker run -p 8080:8080 anthonylimac/movie-award
     Access the Application: Open your web browser and go to:
 
