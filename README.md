@@ -27,3 +27,48 @@ Running with Docker
 Running Integration Tests
     To run the integration tests, execute the following command from the root directory of your project: mvn test
 This command will run all tests defined in the project, including integration tests.
+
+ENDPOINTS:
+Get a list of all movies:
+method: GET /api/v1/movies
+
+Add a movie:
+method: POST /api/v1/movies
+JSON format:
+{
+        "producers": ["producer1", "producer2"],        
+        "studios": [
+            "studio1",
+            "studio2"
+        ],
+        "title": "movie title",
+        "winner": boolean,
+        "nominatedYear": 2007
+    }
+
+Edit a movie:
+method PUT /api/movies/edit
+JSON format:
+{
+        "id": movieId
+        "producers": ["producer1", "producer2"],        
+        "studios": [
+            "studio1",
+            "studio2"
+        ],
+        "title": "movie title",
+        "winner": boolean,
+        "nominatedYear": 2007
+    }
+
+
+Delete a movie:
+method: DELETE /api/movies/delete/{id}
+
+
+Retrieve producers that won a prize and respective gaps between prizes:
+method: GET /api/v1/gaps
+
+
+
+    
