@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ControllerExceptionHandler {
 
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity threatUserNotFoundException(UserNotFoundException exception){
-        ExceptionDTO exceptionDTO = new ExceptionDTO( exception.getMessage(), "500");
+    @ExceptionHandler(MovieNotFoundException.class)
+    public ResponseEntity threatMovieNotFoundException(MovieNotFoundException exception){
+        ExceptionDTO exceptionDTO = new ExceptionDTO( exception.getMessage(), "400");
         return ResponseEntity.badRequest().body(exceptionDTO);
     }
 

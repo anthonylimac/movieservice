@@ -53,16 +53,12 @@ public class MovieAwardApplication {
 
                     MovieDTO movieDTO = new MovieDTO(year, title, studios, producers, winner);
                     movieService.createMovie(movieDTO);
-
-
                 }
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-
         };
     }
 }

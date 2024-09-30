@@ -1,7 +1,7 @@
 package com.movie.award.exceptions;
 
-public class UserNotFoundException  extends RuntimeException{
-    public UserNotFoundException(String message){
+public class MovieNotFoundException extends RuntimeException{
+    public MovieNotFoundException(String message){
         super(message);
     }
 }

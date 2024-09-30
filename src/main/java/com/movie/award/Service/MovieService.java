@@ -5,11 +5,10 @@ import com.movie.award.Model.Movie;
 import com.movie.award.Repo.MovieRepo;
 import com.movie.award.exceptions.InvalidDataAccessException;
 import com.movie.award.exceptions.MovieAlreadyCreatedException;
-import com.movie.award.exceptions.UserNotFoundException;
+import com.movie.award.exceptions.MovieNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,7 +57,7 @@ public class MovieService {
             throw new InvalidDataAccessException("field must not be empty");
         }
 
-        Movie existingMovie = movieRepo.findById(editedMovie.getId()).orElseThrow(() -> new UserNotFoundException("User Not Found"));
+        Movie existingMovie = movieRepo.findById(editedMovie.getId()).orElseThrow(() -> new MovieNotFoundException("Movie Not Found"));
         existingMovie.setProducers(editedMovie.getProducers());
         existingMovie.setStudios(editedMovie.getStudios());
         existingMovie.setWinner(editedMovie.isWinner());
