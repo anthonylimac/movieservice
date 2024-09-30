@@ -3,21 +3,28 @@ package com.movie.award;
 
 import com.movie.award.DTO.MovieDTO;
 import com.movie.award.Service.MovieService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 
 @SpringBootApplication
 
 public class MovieAwardApplication {
+
+    @Autowired
+    private ResourceLoader resourceLoader;
 
     public static void main(String[] args) {
         SpringApplication.run(MovieAwardApplication.class, args);
@@ -27,12 +34,12 @@ public class MovieAwardApplication {
     CommandLineRunner run(MovieService movieService){
         return args -> {
 
-            String excelFilePath = ".\\src\\main\\java\\com\\movie\\award\\datafiles\\movielist (12) (2) (3).csv";
+            Resource resource = resourceLoader.getResource("classpath:datafile/movielist (12) (2) (3).csv");
             String line = "";
             String delimiter = ";";
             String listDelimiter = ",";
 
-            try (BufferedReader br = new BufferedReader(new FileReader(excelFilePath))) {
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream()))) {
                 br.readLine();
                 while ((line = br.readLine()) != null) {
                     String[] columns = line.split(delimiter);

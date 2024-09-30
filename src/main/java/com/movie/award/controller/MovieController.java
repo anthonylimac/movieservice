@@ -1,7 +1,9 @@
 package com.movie.award.controller;
 
+import com.movie.award.DTO.GapResponseDTO;
 import com.movie.award.DTO.MovieDTO;
 import com.movie.award.Model.Movie;
+import com.movie.award.Service.AwardService;
 import com.movie.award.Service.MovieService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class MovieController {
 
     @Autowired
     private MovieService movieService;
+
+    @Autowired
+    private AwardService awardService;
 
     @GetMapping
     public ResponseEntity<List<Movie>> getAllMovies() throws IOException {

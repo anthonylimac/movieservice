@@ -1,0 +1,5 @@
+*.md
+*.log
+.git
+.idea
+.DS_Store
